@@ -9,7 +9,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
    before do
      request.env["devise.mapping"] = Devise.mappings[:user]
      visit new_user_registration_path
-     set_omniauth_facebook()
+     stub_env_for_facebook()
      
      click_link_or_button "Sign in with Facebook"
    end

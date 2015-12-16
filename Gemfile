@@ -42,6 +42,7 @@ group :development, :test do
   gem "shoulda-kept-respond-with-content-type"
   #gem 'shoulda-matchers', '~> 3.0'
   gem 'capybara'
+  gem 'simplecov'
 end
 
 group :production do

@@ -40,12 +40,16 @@ class User < ActiveRecord::Base
         user.location = addr
       end
     else
+#commented out (gsub) messes with rspec tests
       user = User.new(name: auth.info.name, email: auth.info.email,
                       password: Devise.friendly_token[0, 20], remote_avatar_url: auth.info.image.gsub('http://', 'https://'))
       result = Geocoder.search(user.current_sign_in_ip).first
       addr = [result.city,result.state].compact.join(', ')
       user.location = addr
-      user.skip_confirmation!
+
+     # user = User.new(name: auth.info.name, email: auth.info.email,
+      #                password: Devise.friendly_token[0, 20])
+     user.skip_confirmation!
       user.save
     end
     user
