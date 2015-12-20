@@ -67,7 +67,7 @@ gem 'counter_culture', '~> 0.1.33'
 
 gem 'faker'
 gem 'populator'
-gem 'auto_html'
+gem 'auto_html', '~> 1.6.4'
 #gem 'factory_girl'
 
 gem 'figaro'

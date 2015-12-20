@@ -11,7 +11,7 @@ used socify as a template
         Rails 4.2.4
         Ruby 2.2.1p85 (2015-02-26 revision 49769) 
 * System dependencies
-    
+    Needs auto_html version 1.6.4 
 * Configuration
         easiest way is to clone your forked version of the repository in cloud 9 "c9.io"
         run bundle install
