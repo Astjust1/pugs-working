@@ -1,12 +1,16 @@
 def stub_env_for_facebook(provider = "facebook", uid = "1234567", email = "bob@contoso.com", name = "John Doe")
   env = { "omniauth.auth" => { "provider" => provider, "uid" => uid, "info" => { "email" => email, "name" => name } } }
-  @controller.stub!(:env).and_return(env)
+           Rails.application.env_config["devise.facebook_data"] = OmniAuth.config.mock_auth[:facebook]
+  @controller.stub(:env).and_return(env)
+  
   env
 end
 
 def stub_env_for_twitter(provider = "twitter", uid = "1234567", email = "bob@contoso.com", name = "John Doe")
   env = { "omniauth.auth" => { "provider" => provider, "uid" => uid, "info" => { "email" => email, "name" => name } } }
-  @controller.stub!(:env).and_return(env)
+            Rails.application.env_config["devise.twitter_data"] = OmniAuth.config.mock_auth[:twitter]
+  @controller.stub(:env).and_return(env)
+
   env
 end
 

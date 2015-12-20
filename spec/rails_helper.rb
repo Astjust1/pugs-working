@@ -48,7 +48,44 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   
-    
+  OmniAuth.config.test_mode = true
+  
+  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+        provider: 'facebook',
+        uid: '123545',
+        info: {
+          first_name: "Cheese",
+          last_name:  "Deez Nuts",
+          email:      "test@example.com",
+          image: "cheesesesese.jpg"
+        },
+        credentials: {
+          token: "123456",
+          expires_at: Time.now + 1.week
+        },
+        extra: {
+          raw_info: {}
+        }
+      })
+      
+  OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+        provider: 'twitter',
+        uid: '123545',
+        info: {
+          first_name: "Cheese",
+          last_name:  "Deez Nuts",
+          email:      "test@example.com",
+          image: "cheesesesese.jpg"
+        },
+        credentials: {
+          token: "123456",
+          expires_at: Time.now + 1.week
+        },
+        extra: {
+          raw_info: {}
+        }
+      })
+      
   config.render_views
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

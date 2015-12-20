@@ -11,6 +11,8 @@ FactoryGirl.define do
     name {Faker::Name.name }
     email {Faker::Internet.email }
     password {Faker::Internet.password(8) }
+    location Location.create! 
+    current_sign_in_ip {Faker::Internet.ip_v4_address}
     created_at Date.today
     updated_at Date.today
   end
