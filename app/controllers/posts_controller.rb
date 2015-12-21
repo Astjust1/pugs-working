@@ -36,6 +36,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    activity = PublicActivity::Activity.find_by(trackable_id: self.id, trackable_type: self.class.to_s, key: "#{self.class.to_s.downcase}.create")
+    activity.destroy if activity.present?
     @post.destroy
     respond_to do |format|
       format.js
