@@ -9,6 +9,8 @@ class FollowsController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
+    @activity = PublicActivity::Activity.find_by(trackable_id: (params[:user_id]), trackable_type: controller_path.classify)
+    @activity.destroy
     current_user.stop_following(@user)
   end
 end
