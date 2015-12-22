@@ -80,6 +80,8 @@ gem 'devise-i18n'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+#use puma for production server
+gem 'puma'
 # Use unicorn as the app server
 # gem 'unicorn'
 
