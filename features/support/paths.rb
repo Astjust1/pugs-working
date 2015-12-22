@@ -4,8 +4,8 @@ module NavigationHelpers
  
     when /the home\s?page/
       '/'
-    when / the sign u\s?page/
-      'users/sign_in'
+    when / the sign up\s?page/
+      'users/sign_up'
     when /the login\s?page/
         '/users/sign_in'
     when /the reset password\s?page/
