@@ -43,16 +43,16 @@ class User < ActiveRecord::Base
       user = User.new(name: auth.info.name, email: auth.info.email,
                       password: Devise.friendly_token[0, 20], remote_avatar_url: auth.info.image.gsub('http://', 'https://'))
       result = Geocoder.search(user.current_sign_in_ip).first
-      #addr = [result.city, result.state].compact.join(', ')
-      #user.location = addr
-     # user.skip_confirmation!
+      addr = [result.city, result.state].compact.join(', ')
+      user.location = addr
+      user.skip_confirmation!
       user.save
     end
     user
    end
   
    def self.new_with_session(params, session)
-=begin
+
     super.tap do |user|
      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
        user.email = data["email"] if user.email.blank?
@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
           user.name = data["name"] if user.name.blank?
       end
     end
-=end
+
    end
       
 end
