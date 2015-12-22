@@ -19,8 +19,8 @@ FactoryGirl.define do
   
   factory :post do
     with :user
-    name {Faker::Post.name}
-    content {Faker::Post.content}
+    name {Faker::Name.name}
+    content {Faker::Address.city}
   end
   
 end

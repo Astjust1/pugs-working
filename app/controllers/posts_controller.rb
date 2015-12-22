@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
   
-  def create
+  def create(post_params={})
     @post = current_user.posts.new(post_params)
     @post.location = params[:location]
     if @post.save

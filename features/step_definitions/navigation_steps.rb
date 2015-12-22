@@ -99,3 +99,41 @@ end
 Then /^the page should have flash message (.+)$/ do | text|
   page.has_css?('.flashnotice', :text => text, :visible => true)
 end
+
+Given /^I have one\s+user "([^\"]*)" with email "([^\"]*)" and password "([^\"]*)"$/ do |name,email, password|
+  @user = User.new(:email => email,
+                   :name=>name,
+                   :password => password,
+                   :password_confirmation => password)
+   @user.save!
+end
+
+Given /^I am an authenticated user$/ do
+  name = 'exmample'
+  email = 'example@example.com'
+  password = 'testtest'
+
+  step %{I have one user "#{name}" with email "#{email}" and password "#{password}"}
+  step %{I am on the login page}
+  step %{I fill in email with "#{email}"}
+  step %{I fill in password with "#{password}"}
+  step %{I press Log in}
+end
+
+Then /^I should see a div with id starting with "([^\"]*)"$/ do |prefix|
+ #assert $browser.div(:id => prefix).exists?, "could not find div with id '#{prefix}'"
+ el = first("#{prefix}")
+ el.click unless el.nil?
+end
+
+Then /^I should see profile$/ do
+  step %(I should see a div with id starting with "user-info")
+end
+
+Then /^I should see activities$/ do
+  step %(I should see a div with id starting with "activities")
+end
+
+Then /^I should see newsfeed$/ do
+  step %(I should see a div with id starting with "links")
+end
