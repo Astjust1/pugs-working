@@ -16,8 +16,10 @@ used socify as a template
         easiest way is to clone your forked version of the repository in cloud 9 "c9.io"
         run bundle install
         then rake db:migrate
-        To run use rails s -p $PORT -b $IP
+        To run use rails s -p $PORT -b $IP 
+        IF YOU DONT HAVE SSL SET UP ON YOUR LOCALHOST COMMENT OUT config.force_ssl = true in application.rb
         "Facebook login will not work unless I add you as a tester and add the callback url"
+        
 * Database creation
 
 * Database initialization
